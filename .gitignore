@@ -1,0 +1,5 @@
+.tmp
+#static
+static_src/deps
+node_modules
+config.json

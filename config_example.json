@@ -1,0 +1,18 @@
+{
+	"DOMAIN":"https://monitor.ffhb.de/",
+	"ip":"127.0.0.1",
+	"port":8080,
+	"log":{
+		"write":"warn",
+		"write_file":"api.log",
+		"show":"debug"
+	},
+	"database":{
+		"define": {"freezeTableName": true},
+		"dialect": "postgres",
+		"logging": false,
+		"user":"postgres",
+		"database":"monitormap"
+	},
+	"dynamisch":false
+}

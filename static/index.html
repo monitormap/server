@@ -1,0 +1,64 @@
+
+<html ng-app="meckerspaceLiteApp">
+  <head>
+    <title>Geno's Meckerspace</title>
+    <link rel="stylesheet" href="vendor.css">
+  </head>
+  <body ng-controller="MainCtrl">
+    <div style="height:50px;" class="spacer"></div>
+    <div class="ui grid page">
+      <h1 class="ui header">Geno's Meckerspace</h1>
+      <p>Geno ist an manchen Tagen nicht zu ertragen, hier könnt ihr euch einfach mal Luft machen</p>
+    </div>
+    <div style="height:10px;" class="spacer"></div>
+    <main class="ui grid page">
+      <div class="row">
+        <div ng-class="{'success':(status=='success'),'negative':(status=='error')}" ng-if="(status=='success' || status=='error')" class="ui message column">
+          <div ng-if="(status=='success')" class="header">Sending was successfull!</div>
+          <div ng-if="(status=='error')" class="header">Sending was not able!</div>
+          <p ng-if="(status=='error')">Place check the capture code</p>
+        </div>
+      </div>
+      <div class="ui piled segment row">
+        <form ng-submit="send()" class="ui form column">
+          <div ng-class="{'error':error.from}" class="field">
+            <label>From</label>
+            <input ng-model="obj.from" placeholder="Your Name"/>
+          </div>
+          <div ng-class="{'error':error.subject}" class="field">
+            <label>Subject</label>
+            <input ng-model="obj.subject" placeholder="Subject"/>
+          </div>
+          <div ng-class="{'error':error.text}" class="field">
+            <label>Message</label>
+            <textarea ng-model="obj.text" placeholder="Some words"></textarea>
+          </div>
+          <div class="ui two column middle aligned very relaxed stackable grid">
+            <div class="column">
+              <div class="ui card centered">
+                <div class="content">
+                  <div class="header">Captcha:</div>
+                </div>
+                <div class="image"><img ng-src="{{imageUrl}}" class="ui image"/></div>
+                <div class="content">
+                  <div ng-class="{'error':error.captcha}" class="field">
+                    <input ng-model="obj.captcha"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="center aligned column">
+              <button class="ui big primary button">Send</button>
+              <div ng-click="reset()" class="ui big button">Clean</div>
+            </div>
+          </div>
+          <div ng-class="{'active':(status=='loading')}" class="ui dimmer inverted">
+            <div class="ui text loader">Sending...</div>
+          </div>
+        </form>
+      </div>
+    </main>
+    <script src="vendor.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
