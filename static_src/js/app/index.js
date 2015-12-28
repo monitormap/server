@@ -8,4 +8,9 @@ angular.module('monitormapApp')
 				templateUrl: 'app/list.html',
 				controller:'ListCtrl'
 			})
+			.state('new', {
+				url:'/new',
+				templateUrl: 'app/list.html',
+				controller:'NewCtrl'
+			})
 	}]);

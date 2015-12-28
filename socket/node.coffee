@@ -3,7 +3,7 @@ config = require('../config')
 log = require('../lib/log')
 models = require('../lib/models')
 
-module.exports = (socket)->
+module.exports = (io,socket)->
 	socket.on('node:list',(call)->
 		models.Node.DB.findAll().then((node)->
 			if node.length>0
@@ -17,6 +17,7 @@ module.exports = (socket)->
 			models.Node.DB.findAll({where:{mac:new_node.mac}}).then((node)->
 				if node.length <= 0
 					models.Node.DB.create(new_node).then((node)->
+						io.emit('event::node:set:create',node)
 						call({s:(if node then true else false)})
 					)
 				else

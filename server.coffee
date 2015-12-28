@@ -39,7 +39,9 @@ server = require('http').Server(app)
 io = require('socket.io')(server,{path:'/ws'})
 
 socket = require('./socket')
-io.sockets.on('connection',socket)
+io.sockets.on('connection',(s)->
+	socket(io,s)
+)
 
 server.listen(config.port,config.ip, ->
 	log("debug",null,"init server on: "+config.ip+":"+config.port)

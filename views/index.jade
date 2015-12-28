@@ -17,7 +17,7 @@ html(ng-app="monitormapApp")
 				a.item(ui-sref="list",ui-sref-active="active")
 					i.icon.list
 					| List
-				a.item
+				a.item(ui-sref="new",ui-sref-active="active")
 					i.icon.plus
 					| New
 		main.main
@@ -38,5 +38,6 @@ html(ng-app="monitormapApp")
 		script(src='js/app.js')
 		script(src='js/app/index.js')
 		script(src='js/app/list.js')
+		script(src='js/app/new.js')
 		// endinjector
 		// endbuild
