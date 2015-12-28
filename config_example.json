@@ -16,5 +16,6 @@
 	},
 	"rrd_path":"/tmp/data",
 	"passphrase":"test",
+	"newitems":300000,
 	"dynamisch":true
 }

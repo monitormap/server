@@ -12,6 +12,14 @@ module.exports = (io,socket)->
 				call({s:false})
 		)
 	)
+	socket.on('node:list:new',(call)->
+		models.Node.DB.findAll({where:{createdAt:{$gt: new Date(new Date() - config.newitems)}}}).then((node)->
+			if node.length>0
+				call({s:true,list:node})
+			else
+				call({s:false})
+		)
+	)
 	socket.on('node:set',(passphrase,new_node,call)->
 		if(passphrase==config.passphrase)
 			models.Node.DB.findAll({where:{mac:new_node.mac}}).then((node)->
