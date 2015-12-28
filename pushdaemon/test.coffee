@@ -1,11 +1,12 @@
 io = require('socket.io-client')
+config = require('./config')
 
 options =
 	transports: ['websocket']
 	path: '/ws'
 	'force new connection': true
 
-socket = io.connect('http://localhost:8080',options)
+socket = io.connect(config.url_socket,options)
 console.log('Init')
 obj =
 	name:"TEST-Dummy",
@@ -37,7 +38,7 @@ obj =
 	traffic_rx_50_bytes:0,
 	traffic_rx_50_packets:0
 console.log(obj)
-socket.emit('node:set','test',obj,(data)->
+socket.emit('node:set',config.passphrase,obj,(data)->
 	console.log("Recieved:",data)
 	socket.disconnect()
 )
