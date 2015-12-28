@@ -14,7 +14,6 @@ module.exports = (socket)->
 				call({s:false})
 		)
 	)
-
 	socket.on('node:set',(passphrase,new_node,call)->
 		if(passphrase==config.passphrase)
 			models.Node.DB.findAll({"mac":new_node.mac}).then((node)->
