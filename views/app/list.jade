@@ -1,0 +1,13 @@
+.scrolltable
+	table.ui.table.striped(ts-wrapper)
+		thead
+			tr
+				th(ts-criteria='name|lowercase') Name
+		tbody
+			tr(ng-repeat='item in list',ts-repeat)
+				td {{item.name}}
+			tr.showIfLast
+				td(colspan="1")
+		tfoot
+			tr
+				th count: {{list.length}}

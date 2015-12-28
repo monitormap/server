@@ -6,7 +6,7 @@ log = require('../lib/log')
 models = require('../lib/models')
 
 module.exports = (socket)->
-	socket.on('node:list',
+	socket.on('node:list',(call)->
 		models.Node.findAll({
 		include:
 			- model:models.Node,as:'parent'

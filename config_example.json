@@ -1,5 +1,5 @@
 {
-	"DOMAIN":"https://monitor.ffhb.de/",
+	"DOMAIN":"http://127.0.0.1:8080",
 	"ip":"127.0.0.1",
 	"port":8080,
 	"log":{
@@ -14,5 +14,5 @@
 		"user":"postgres",
 		"database":"monitormap"
 	},
-	"dynamisch":false
+	"dynamisch":true
 }
