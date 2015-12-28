@@ -10,7 +10,7 @@ console.log('Init')
 obj =
 	name:"TEST-Dummy",
 	owner:"none",
-	mac:"08:11:96:27:e7:74",
+	mac:"f1:f1:f1:f1:f1:f1",
 	lat:5.443432,
 	lon:53.443432,
 

@@ -12,7 +12,6 @@ module.exports = (DB)->
 		channel_50:{type: Sequelize.INTEGER},
 		channel_24_power:{type: Sequelize.INTEGER},
 		channel_50_power:{type: Sequelize.INTEGER},
-		datetime:{type: Sequelize.DATE},
 		client_24:{type: Sequelize.INTEGER},
 		client_50:{type: Sequelize.INTEGER},
 
