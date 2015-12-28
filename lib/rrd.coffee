@@ -3,7 +3,7 @@ config = require('../config')
 RRD = require('./rrdtool')
 fs = require('fs')
 
-createParam = ['-s','360']
+createParam = ['-s',''+(config.times.toRRD/1000)]
 
 
 create = (name,type)->

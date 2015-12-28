@@ -16,6 +16,10 @@
 	},
 	"rrd_path":"/tmp/data",
 	"passphrase":"test",
-	"newitems":300000,
+	"times":{
+		"newitems":300000,
+		"nottoRRD":300000,
+		"toRRD":3000
+	},
 	"dynamisch":true
 }

@@ -38,6 +38,8 @@ else
 server = require('http').Server(app)
 io = require('socket.io')(server,{path:'/ws'})
 
+require('./lib/cronjob').init()
+
 socket = require('./socket')
 io.sockets.on('connection',(s)->
 	socket(io,s)

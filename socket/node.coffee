@@ -2,6 +2,7 @@ config = require('../config')
 
 log = require('../lib/log')
 models = require('../lib/models')
+rrd = require('../lib/rrd')
 
 module.exports = (io,socket)->
 	socket.on('node:list',(call)->
@@ -26,6 +27,7 @@ module.exports = (io,socket)->
 				if node.length <= 0
 					models.Node.DB.create(new_node).then((node)->
 						io.emit('event::node:set:create',node)
+						rrd.create('node',models.Node)
 						call({s:(if node then true else false)})
 					)
 				else
