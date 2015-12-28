@@ -7,7 +7,7 @@ app.get('/fetch',(req,res)->
 )
 
 app.get('/get',(req,res)->
-	models.Node.findAll({}).then((nodes)->
+	models.Node.DB.findAll({}).then((nodes)->
 		output =
 			nodes:[],
 			_meta:

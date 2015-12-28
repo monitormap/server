@@ -6,7 +6,7 @@ models = require('../lib/models')
 app.use('/ansible',require('./ansible'))
 
 app.get('/statistic',(req,res)->
-	models.Node.findAll().then((nodes)->
+	models.Node.DB.findAll().then((nodes)->
 		output =
 			client_24: 0
 			client_50: 0

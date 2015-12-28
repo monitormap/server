@@ -14,5 +14,7 @@
 		"user":"postgres",
 		"database":"monitormap"
 	},
+	"rrd_path":"/tmp/data",
+	"passphrase":"test",
 	"dynamisch":true
 }
