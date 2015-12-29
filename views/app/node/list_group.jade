@@ -31,7 +31,8 @@ table.ui.table.striped
 					button.ui.button.labeled.icon(ng-class='{"loading":loading}')
 						i.icon.save
 						| Save
-			td(ng-if='obj.id!=item.id') {{item.name}}
+			td(ng-if='obj.id!=item.id')
+				a(ui-sref="node.detailgroup({name:item.name})") {{item.name}}
 			td(ng-if='obj.id!=item.id')
 				.ui.label(ng-repeat='i in item.nodes')
 					span(ng-repeat='li in list',ng-if="li.mac=i") {{li.name}}
