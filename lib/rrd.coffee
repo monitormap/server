@@ -18,7 +18,7 @@ create = (name,type)->
 			path = config.rrd_path+'/'+name+'/'+item.mac+'.rrd'
 			try
 				fs.statSync(path);
-			catch ->
+			catch
 				tmp = new RRD()
 				tmp.create(path,createParam,type.DS,type.RRA,(err)->)
 				rrd_cache[path] = tmp
@@ -28,7 +28,7 @@ create = (name,type)->
 			path = config.rrd_path+'/'+name+'/'+item.name+'.rrd'
 			try
 				fs.statSync(path);
-			catch ->
+			catch
 				tmp = new RRD()
 				tmp.create(path,createParam,type.global.DS,type.global.RRA,(err)->)
 				rrd_cache[path] = tmp
@@ -37,7 +37,7 @@ create = (name,type)->
 		path = config.rrd_path+'/'+name+'/global.rrd'
 		try
 			fs.statSync(path);
-		catch ->
+		catch
 			tmp = new RRD()
 			tmp.create(path,createParam,type.global.DS,type.global.RRA,(err)->)
 			rrd_cache[path] = tmp
