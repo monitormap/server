@@ -23,20 +23,20 @@ obj =
 	client_50:0,
 	ports:0,
 	ports_gb:0,
-	traffic_tx_bytes:0,
-	traffic_tx_packets:0,
-	traffic_rx_bytes:0,
-	traffic_rx_packets:0,
+	tx_bytes:0,
+	tx_packets:0,
+	rx_bytes:0,
+	rx_packets:0,
 
-	traffic_tx_24_bytes:0,
-	traffic_tx_24_packets:0,
-	traffic_rx_24_bytes:0,
-	traffic_rx_24_packets:0,
+	tx_24_bytes:0,
+	tx_24_packets:0,
+	rx_24_bytes:0,
+	rx_24_packets:0,
 
-	traffic_tx_50_bytes:0,
-	traffic_tx_50_packets:0,
-	traffic_rx_50_bytes:0,
-	traffic_rx_50_packets:0
+	tx_50_bytes:0,
+	tx_50_packets:0,
+	rx_50_bytes:0,
+	rx_50_packets:0
 console.log(obj)
 socket.emit('node:set',config.passphrase,obj,(data)->
 	console.log("Recieved:",data)

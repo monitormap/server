@@ -28,5 +28,6 @@ create = (name,type)->
 		tmp = new RRD()
 		tmp.create(config.rrd_path+'/'+name+'/global.rrd',createParam,type.global.DS,type.global.RRA,(err)->
 		)
+update = (name,type)->
 
 module.exports.create = create
