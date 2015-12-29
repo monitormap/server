@@ -24,7 +24,7 @@ _update_group = (type,items,name) ->
 	rrd.update(type,name,obj)
 
 update_group = (type,items,macs,name='') ->
-	if macs.length <= 0
+	if macs and macs.length <= 0
 		_update_group(type,items,'global')
 	else
 		filtered = []
