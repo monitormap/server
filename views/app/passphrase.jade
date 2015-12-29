@@ -1,0 +1,7 @@
+form.ui.form(form='form',ng-submit='set()')
+	.field
+		label Passphrase
+		input(ng-model='new_passphrase')
+	button.ui.button.labeled.icon(ng-class='{"loading":loading}')
+		i.icon.save
+		| Unlock

@@ -38,10 +38,17 @@ module.exports = (io,socket)->
 		else
 			call({s:false})
 	)
-
+	socket.on('node:group:list',(call)->
+		models.Node.Group.findAll().then((groups)->
+			if groups.length>0
+				call({s:true,list:groups})
+			else
+				call({s:false})
+		)
+	)
 	socket.on('node:group:set',(passphrase,new_group,call)->
 		if(passphrase==config.passphrase)
-			models.Node.Group.findAll({where:{mac:new_group.name}}).then((group)->
+			models.Node.Group.findAll({where:{name:new_group.name}}).then((group)->
 				if group.length <= 0
 					models.Node.Group.create(new_group).then((group)->
 						call({s:(if group then true else false)})

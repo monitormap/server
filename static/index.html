@@ -3,12 +3,15 @@
   <head>
     <title>monitorMap</title>
     <link rel="stylesheet" href="vendor.css">
+    <link rel="stylesheet" href="app.css">
   </head>
   <body>
     <div>
-      <div class="ui top fixed menu"><a ui-sref="list" ui-sref-active="active" class="item"><i class="icon list"></i>List</a><a class="item"><i class="icon plus"></i>New</a></div>
+      <div class="ui top menu"><a ui-sref="node.list" ui-sref-active="active" class="item"><i class="icon list"></i>List</a><a ui-sref="node.group" ui-sref-active="active" class="item"><i class="icon group"></i>Group</a><a ui-sref="node.new" ui-sref-active="active" class="item"><i class="icon plus"></i>New</a></div>
     </div>
-    <div ui-view="ui-view"></div>
+    <main class="main">
+      <div ui-view=""></div>
+    </main>
     <script src="vendor.js"></script>
     <script src="app.js"></script>
   </body>

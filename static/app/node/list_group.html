@@ -1,0 +1,38 @@
+
+<table class="ui table striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Devices</th>
+      <th>
+        <button ng-click="setObj({new:true})" class="ui button icon"><i class="icon add"></i></button>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-if="obj.new">
+      <td colspan="3">
+        <form form="form" ng-submit="set()" class="ui form">
+          <div class="field">
+            <label>Name</label>
+            <input ng-model="obj.name"/>
+          </div>
+          <div class="field">
+            <label>Devices</label>
+            <select ng-model="obj.macs" ng-options="i.mac as i.name for i in list" multiple="multiple" class="ui search dropdown"></select>
+          </div>
+        </form>
+      </td>
+    </tr>
+    <tr ng-repeat="item in glist">
+      <td>{{item.name}}</td>
+      <td>{{item.macs}}</td>
+      <td></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th colspan="3">count: {{list.length}}</th>
+    </tr>
+  </tfoot>
+</table>

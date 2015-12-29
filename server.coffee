@@ -25,6 +25,11 @@ if(config.dynamisch)
 	partials = (req, res)->
 	  filename = req.params.filename
 	  return unless filename
+	  res.render "app/node/#{filename}.jade"
+	app.get('/app/node/:filename.html', partials)
+	partials = (req, res)->
+	  filename = req.params.filename
+	  return unless filename
 	  res.render "app/#{filename}.jade"
 	app.get('/app/:filename.html', partials)
 	app.get('/', (req,res)->

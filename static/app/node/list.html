@@ -1,0 +1,20 @@
+
+<div class="scrolltable">
+  <table ts-wrapper="ts-wrapper" class="ui table striped">
+    <thead>
+      <tr>
+        <th ts-criteria="name|lowercase" ts-default="ts-default">Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in list" ts-repeat="ts-repeat">
+        <td>{{item.name}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>count: {{list.length}}</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>

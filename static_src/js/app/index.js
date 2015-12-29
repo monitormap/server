@@ -3,14 +3,9 @@
 angular.module('monitormapApp')
 	.config(['$stateProvider',function ($stateProvider) {
 		$stateProvider
-			.state('list', {
-				url:'/list',
-				templateUrl: 'app/list.html',
-				controller:'ListCtrl'
-			})
-			.state('new', {
-				url:'/new',
-				templateUrl: 'app/list.html',
-				controller:'NewCtrl'
-			})
+			.state('passphrase', {
+				url:'/passphrase',
+				templateUrl: 'app/passphrase.html',
+				controller:'PassphraseCtrl'
+			});
 	}]);
