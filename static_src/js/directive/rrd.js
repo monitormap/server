@@ -13,6 +13,7 @@ angular.module('monitormapApp')
 		link:function(scope, element, attrs){
 			var ID = 'rrd' + uniqueId++;
 			element.attr('id' ,ID);
+			var rrd_data = undefined;
 			try {
 				FetchBinaryURLAsync(config.RRD+scope.path, rrd_handler);
 			} catch (err) {
