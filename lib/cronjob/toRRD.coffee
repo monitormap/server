@@ -13,6 +13,7 @@ update_node = (type,item) ->
 _update_group = (type,items,name) ->
 	obj = {}
 	if items and items.length > 0
+		obj.count = items.length
 		for ds in models[type].global.DS
 			for entry in Object.keys(items[0].dataValues)
 				if ds.indexOf(entry) >= 0
