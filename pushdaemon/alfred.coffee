@@ -30,8 +30,9 @@ getInfos = (call)->
 	alfred('158',(nodeinfo)->
 		alfred('159',(statistics)->
 			output = []
-			for item in Object.keys(nodeinfo)
-				output.push({nodeinfo:nodeinfo[item],statistics:statistics[item]})
+			if nodeinfo
+				for item in Object.keys(nodeinfo)
+					output.push({nodeinfo:nodeinfo[item],statistics:statistics[item]})
 			call(output)
 		)
 	)
