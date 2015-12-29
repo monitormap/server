@@ -29,7 +29,7 @@ update_group = (type,items,macs,name='') ->
 	else
 		filtered = []
 		for item in items
-			if item.mac in macs
+			if macs and item.mac in macs
 				filtered.push(item)
 		_update_group(type,filtered,name)
 
