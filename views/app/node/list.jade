@@ -23,24 +23,36 @@
 		tbody
 			tr(ng-repeat='item in list',ts-repeat)
 				td
-					h4.ui.header {{item.name}}
+					a.ui.header(ui-sref='node.detail({mac:item.mac})') {{item.name}}
 					div.sub.header {{item.mac}}
 				td
-					i.icon.green.check(ng-if="status(item.updatedAt)")
-					i.icon.red.delete(ng-if="!status(item.updatedAt)")
+					i.icon.green.check(ng-if="status(item.timedate)")
+					i.icon.red.delete(ng-if="!status(item.timedate)")
 
-				td.right.aligned.warning {{item.channel_24}}
-				td.right.aligned {{item.channel_24_power}}
+				td.right.aligned.warning(ng-if='!passphrase') {{item.channel_24}}
+				td.warning(ng-if='passphrase')
+					.ui.input.fluid
+						input(type='number',ng-model='item.channel_24')
+				td.right.aligned(ng-if='!passphrase') {{item.channel_24_power}}
+				td(ng-if='passphrase')
+					.ui.input.fluid
+						input(type='number',ng-model='item.channel_24_power')
 				td.right.aligned.positive {{item.client_24}}
 
-				td.right.aligned.warning {{item.channel_50}}
-				td.right.aligned {{item.channel_50_power}}
+				td.right.aligned.warning(ng-if='!passphrase') {{item.channel_50}}
+				td.right.aligned.warning(ng-if='passphrase')
+					.ui.input.fluid
+						input(type='number',ng-model='item.channel_50')
+				td.right.aligned(ng-if='!passphrase') {{item.channel_50_power}}
+				td.right.aligned(ng-if='passphrase')
+					.ui.input.fluid
+						input(type='number',ng-model='item.channel_50_power')
 				td.right.aligned.positive {{item.client_50}}
 
 				td.right.aligned {{item.ports>0?(item.ports_gb*100)/item.ports:0}}
 				td.right.aligned {{item.ports}}
 				td
-					button.ui.button.icon(ng-if='passphrase')
+					button.ui.button.icon(ng-if='passphrase',ng-click='set(item)')
 						i.icon.save
 		tfoot
 			tr

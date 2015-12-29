@@ -17,6 +17,11 @@ angular.module('monitormapApp')
 				templateUrl: 'app/node/list_group.html',
 				controller:'GroupCtrl'
 			})
+			.state('node.detail', {
+				url:'/detail/:mac',
+				templateUrl: 'app/node/detail.html',
+				controller:'DetailCtrl'
+			})
 			.state('node.new', {
 				url:'/new',
 				templateUrl: 'app/node/list.html',

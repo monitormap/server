@@ -20,6 +20,8 @@ angular.module('monitormapApp')
 		});
 		$scope.set = function(){
 			socket.emit('node:group:set',$rootScope.passphrase,$scope.obj,function(result){
+				if(result.s)
+					$scope.setObj(empty_entry);
 			})
 		}
 	}]);

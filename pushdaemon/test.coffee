@@ -11,6 +11,7 @@ console.log('Init')
 obj =
 	name:"TEST-Dummy",
 	owner:"none",
+	timedate: new Date(),
 	mac:"f1:f1:f1:f1:f1:f1",
 	lat:5.443432,
 	lon:53.443432,
