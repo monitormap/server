@@ -4,7 +4,7 @@ table.ui.table.striped
 			th Name
 			th Devices
 			th
-				button.ui.button.icon(ng-click='setObj({new:true})')
+				button.ui.button.icon(ng-click='setObj({new:true})',ng-if='passphrase')
 					i.icon.add
 	tbody
 		tr(ng-if='obj.new')
@@ -36,7 +36,7 @@ table.ui.table.striped
 				.ui.label(ng-repeat='i in item.nodes')
 					span(ng-repeat='li in list',ng-if="li.mac=i") {{li.name}}
 			td(ng-if='obj.id!=item.id')
-				button.ui.button.icon(ng-click='setObj(item)')
+				button.ui.button.icon(ng-click='setObj(item)',ng-if='passphrase')
 					i.icon.edit
 	tfoot
 		tr

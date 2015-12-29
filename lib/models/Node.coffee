@@ -7,6 +7,7 @@ module.exports = (DB)->
 		mac:{type: Sequelize.STRING, unique: true},
 		lat:{type: Sequelize.FLOAT},
 		lon:{type: Sequelize.FLOAT},
+		timedate:{type: Sequelize.DATE},
 
 		channel_24:{type: Sequelize.INTEGER},
 		channel_50:{type: Sequelize.INTEGER},

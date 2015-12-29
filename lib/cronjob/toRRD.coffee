@@ -12,7 +12,7 @@ update_node = (type,item) ->
 
 _update_group = (type,items,name) ->
 	obj = {}
-	if items.length >0
+	if items and items.length > 0
 		for ds in models[type].global.DS
 			for entry in Object.keys(items[0].dataValues)
 				if ds.indexOf(entry) >= 0
@@ -21,7 +21,6 @@ _update_group = (type,items,name) ->
 							obj[entry] += item[entry]
 						else
 							obj[entry] = item[entry]
-	console.log(name,obj)
 	rrd.update(type,name,obj)
 
 update_group = (type,items,macs,name='') ->
@@ -46,7 +45,7 @@ module.exports = ->
 					update_node(t,item)
 				models[t].Group.findAll().then((groups)->
 					for item in groups
-						update_group(t,items,item.macs,item.name)
+						update_group(t,items,item.nodes,item.name)
 				)
 				update_group(t,items,[])
 			)
