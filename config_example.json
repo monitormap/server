@@ -18,7 +18,7 @@
 	"passphrase":"test",
 	"times":{
 		"newitems":300000,
-		"toRRD":3000
+		"toRRD":300000
 	},
 	"dynamisch":true
 }

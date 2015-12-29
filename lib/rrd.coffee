@@ -16,22 +16,31 @@ create = (name,type)->
 	type.DB.findAll().then((list)->
 		for item in list
 			path = config.rrd_path+'/'+name+'/'+item.mac+'.rrd'
-			tmp = new RRD()
-			tmp.create(path,createParam,type.DS,type.RRA,(err)->)
-			rrd_cache[path] = tmp
+			try
+				fs.statSync(path);
+			catch ->
+				tmp = new RRD()
+				tmp.create(path,createParam,type.DS,type.RRA,(err)->)
+				rrd_cache[path] = tmp
 	)
 	type.Group.findAll().then((list)->
 		for item in list
 			path = config.rrd_path+'/'+name+'/'+item.name+'.rrd'
-			tmp = new RRD()
-			tmp.create(path,createParam,type.global.DS,type.global.RRA,(err)->)
-			rrd_cache[path] = tmp
+			try
+				fs.statSync(path);
+			catch ->
+				tmp = new RRD()
+				tmp.create(path,createParam,type.global.DS,type.global.RRA,(err)->)
+				rrd_cache[path] = tmp
 	)
 	if type.global
 		path = config.rrd_path+'/'+name+'/global.rrd'
-		tmp = new RRD()
-		tmp.create(path,createParam,type.global.DS,type.global.RRA,(err)->)
-		rrd_cache[path] = tmp
+		try
+			fs.statSync(path);
+		catch ->
+			tmp = new RRD()
+			tmp.create(path,createParam,type.global.DS,type.global.RRA,(err)->)
+			rrd_cache[path] = tmp
 
 update = (type,name,data)->
 	path = config.rrd_path+'/'+type+'/'+name+'.rrd'
