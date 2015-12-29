@@ -3,6 +3,7 @@
 'use strict';
 
 angular.module('monitormapApp', [
+	'config',
 	'ui.router',
 	'btford.socket-io',
 	'leaflet-directive',
@@ -11,9 +12,9 @@ angular.module('monitormapApp', [
 	.config(['$urlRouterProvider','$locationProvider',function ($urlRouterProvider, $locationProvider) {
 		$urlRouterProvider.otherwise('/');
 	}])
-	.factory('socket', function (socketFactory) {
+	.factory('socket', function (socketFactory,config) {
 		return socketFactory({
 			prefix: '',
-			ioSocket: io.connect('http://localhost:8080',{path:'/ws'})
+			ioSocket: io.connect(config.HOST,{path:'/ws'})
 		});
 	});

@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('monitormapApp')
-	.controller('ListCtrl', ['$scope','$rootScope','socket',function ($scope, $rootScope,socket) {
+	.controller('ListCtrl', ['$scope','$rootScope','socket','config',function ($scope, $rootScope,socket,config) {
 		$scope.list = [];
 		socket.emit('node:list',function(result){
 			$scope.list = result.list;
 		});
 		$scope.status = function(a){
-			if(new Date(a) > new Date(new Date() - 5*60*1000 ))
+			if(new Date(a) > new Date(new Date() - config.offline_time))
 				return true
 			return false
 		}
