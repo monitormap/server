@@ -24,7 +24,7 @@ alfred = (r,call)->
 			output = JSON.parse(data)
 			call(output)
 		else
-			call()
+			call([])
 	)
 getInfos = (call)->
 	alfred('158',(nodeinfo)->
@@ -32,7 +32,7 @@ getInfos = (call)->
 			output = []
 			if nodeinfo
 				for item in Object.keys(nodeinfo)
-					output.push({nodeinfo:nodeinfo[item],statistics:statistics[item]})
+					output.push({nodeinfo:nodeinfo[item],statistics:(if statistics then statistics[item])})
 			call(output)
 		)
 	)
