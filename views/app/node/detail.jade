@@ -1,1 +1,6 @@
-h1 {{obj.name}}
+h1.header {{obj.name}}
+	span.sub.header {{obj.mac}}
+
+
+h4 RRD
+rrd(ng-if="obj.mic",path="/node/{{obj.mic}}.rrd")
