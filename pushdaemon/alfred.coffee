@@ -43,11 +43,11 @@ getInfos((data)->
 		for item in data
 			obj =
 				name:item.nodeinfo.hostname,
-				owner:item.nodeinfo.owner.contact,
+				owner:(if item.nodeinfo.owner.contact then item.nodeinfo.owner.contact),
 				timedate: new Date(),
 				mac:item.nodeinfo.network.mac,
-				lat:item.nodeinfo.location.latitude,
-				lon:item.nodeinfo.location.longitude,
+				lat:(if item.nodeinfo.location.latitude then item.nodeinfo.location.latitude),
+				lon:(if item.nodeinfo.location.longitude then item.nodeinfo.location.longitude),
 
 				channel_24:6,
 				channel_50:40,
