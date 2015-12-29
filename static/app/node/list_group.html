@@ -5,7 +5,7 @@
       <th>Name</th>
       <th>Devices</th>
       <th>
-        <button ng-click="setObj({new:true})" class="ui button icon"><i class="icon add"></i></button>
+        <button ng-click="setObj({new:true})" ng-if="passphrase" class="ui button icon"><i class="icon add"></i></button>
       </th>
     </tr>
   </thead>
@@ -19,20 +19,38 @@
           </div>
           <div class="field">
             <label>Devices</label>
-            <select ng-model="obj.macs" ng-options="i.mac as i.name for i in list" multiple="multiple" class="ui search dropdown"></select>
+            <select ng-model="obj.macs" ng-options="i.nodes as i.name for i in list" multiple="multiple" class="ui search dropdown"></select>
           </div>
+          <button ng-class="{&quot;loading&quot;:loading}" class="ui button labeled icon"><i class="icon save"></i>Save</button>
         </form>
       </td>
     </tr>
     <tr ng-repeat="item in glist">
-      <td>{{item.name}}</td>
-      <td>{{item.macs}}</td>
-      <td></td>
+      <td ng-if="obj.id==item.id" colspan="3">
+        <form form="form" ng-submit="set()" class="ui form">
+          <div class="field">
+            <label>Name</label>
+            <input ng-model="obj.name"/>
+          </div>
+          <div class="field">
+            <label>Devices</label>
+            <select ng-model="obj.nodes" ng-options="i.mac as i.name for i in list" multiple="multiple" class="ui search dropdown"></select>
+          </div>
+          <button ng-class="{&quot;loading&quot;:loading}" class="ui button labeled icon"><i class="icon save"></i>Save</button>
+        </form>
+      </td>
+      <td ng-if="obj.id!=item.id"><a ui-sref="node.detailgroup({name:item.name})">{{item.name}}</a></td>
+      <td ng-if="obj.id!=item.id">
+        <div ng-repeat="i in item.nodes" class="ui label"><span ng-repeat="li in list" ng-if="li.mac=i">{{li.name}}</span></div>
+      </td>
+      <td ng-if="obj.id!=item.id">
+        <button ng-click="setObj(item)" ng-if="passphrase" class="ui button icon"><i class="icon edit"></i></button>
+      </td>
     </tr>
   </tbody>
   <tfoot>
     <tr>
-      <th colspan="3">count: {{list.length}}</th>
+      <th colspan="3">count: {{glist.length}}</th>
     </tr>
   </tfoot>
 </table>

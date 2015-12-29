@@ -1,19 +1,73 @@
 
 <div class="scrolltable">
-  <table ts-wrapper="ts-wrapper" class="ui table striped">
+  <table ts-wrapper="ts-wrapper" class="ui small orange compact table striped">
     <thead>
       <tr>
-        <th ts-criteria="name|lowercase" ts-default="ts-default">Name</th>
+        <th ts-criteria="name|lowercase" ts-default="ts-default" rowspan="2">Name</th>
+        <th ts-criteria="updatedAt|lowercase" ts-default="ts-default" rowspan="2">Status</th>
+        <th colspan="3">2.4 Ghz</th>
+        <th colspan="3">5 Ghz</th>
+        <th colspan="2">Eth</th>
+        <th></th>
+      </tr>
+      <tr>
+        <th ts-criteria="channel_24|lowercase" ts-default="ts-default">Channel</th>
+        <th ts-criteria="channel_24_power|lowercase" ts-default="ts-default">Power</th>
+        <th ts-criteria="client_24|lowercase" ts-default="ts-default">Client</th>
+        <th ts-criteria="channel_50|lowercase" ts-default="ts-default">Channel</th>
+        <th ts-criteria="channel_50_power|lowercase" ts-default="ts-default">Power</th>
+        <th ts-criteria="client_50|lowercase" ts-default="ts-default">Client</th>
+        <th ts-criteria="ports_gb|lowercase" ts-default="ts-default">Gbit%</th>
+        <th ts-criteria="ports|lowercase" ts-default="ts-default">All</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="item in list" ts-repeat="ts-repeat">
-        <td>{{item.name}}</td>
+        <td><a ui-sref="node.detail({mac:item.mac})" class="ui header">{{item.name}}</a>
+          <div class="sub header">{{item.mac}}</div>
+        </td>
+        <td><i ng-if="status(item.timedate)" class="icon green check"></i><i ng-if="!status(item.timedate)" class="icon red delete"></i></td>
+        <td ng-if="!passphrase" class="right aligned warning">{{item.channel_24}}</td>
+        <td ng-if="passphrase" class="warning">
+          <div class="ui input fluid">
+            <input type="number" ng-model="item.channel_24"/>
+          </div>
+        </td>
+        <td ng-if="!passphrase" class="right aligned">{{item.channel_24_power}}</td>
+        <td ng-if="passphrase">
+          <div class="ui input fluid">
+            <input type="number" ng-model="item.channel_24_power"/>
+          </div>
+        </td>
+        <td class="right aligned positive">{{item.client_24}}</td>
+        <td ng-if="!passphrase" class="right aligned warning">{{item.channel_50}}</td>
+        <td ng-if="passphrase" class="right aligned warning">
+          <div class="ui input fluid">
+            <input type="number" ng-model="item.channel_50"/>
+          </div>
+        </td>
+        <td ng-if="!passphrase" class="right aligned">{{item.channel_50_power}}</td>
+        <td ng-if="passphrase" class="right aligned">
+          <div class="ui input fluid">
+            <input type="number" ng-model="item.channel_50_power"/>
+          </div>
+        </td>
+        <td class="right aligned positive">{{item.client_50}}</td>
+        <td class="right aligned">{{item.ports>0?(item.ports_gb*100)/item.ports:0}}</td>
+        <td class="right aligned">{{item.ports}}</td>
+        <td>
+          <button ng-if="passphrase" ng-click="set(item)" class="ui button icon"><i class="icon save"></i></button>
+        </td>
       </tr>
     </tbody>
     <tfoot>
       <tr>
-        <th>count: {{list.length}}</th>
+        <th colspan="2">{{list.length}}</th>
+        <th colspan="3" class="right aligned">{{count('client_24')}}</th>
+        <th colspan="3" class="right aligned">{{count('client_50')}}</th>
+        <th colspan="2" class="right aligned">{{count('ports_gb')}}/{{count('ports')}}</th>
+        <th></th>
       </tr>
     </tfoot>
   </table>

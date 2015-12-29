@@ -1,0 +1,19 @@
+
+<h1>{{obj.name}}</h1>
+<h4>RRD</h4>
+<rrd ng-if="obj.name" path="/node/{{obj.name}}.rrd"></rrd>
+<h4>Devices:</h4>
+<table class="ui table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Mac</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="i in obj.nodes">
+      <td ng-repeat="li in list" ng-if="li.mac=i">{{li.name}}</td>
+      <td>{{i}}</td>
+    </tr>
+  </tbody>
+</table>
