@@ -7,7 +7,7 @@ update_node = (type,item) ->
 	for ds in models[type].DS
 		for entry in Object.keys(item.dataValues)
 			if ds.indexOf(entry) >= 0
-				obj[entry] = item[entry]
+				obj[entry] = parseInt(item[entry])
 	rrd.update(type,item.mac,obj)
 
 _update_group = (type,items,name) ->
@@ -19,9 +19,9 @@ _update_group = (type,items,name) ->
 				if ds.indexOf(entry) >= 0
 					for item in items
 						if obj[entry]
-							obj[entry] += item[entry]
+							obj[entry] += parseInt(item[entry])
 						else
-							obj[entry] = item[entry]
+							obj[entry] = parseInt(item[entry])
 	rrd.update(type,name,obj)
 
 update_group = (type,items,macs,name='') ->
