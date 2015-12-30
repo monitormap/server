@@ -73,8 +73,6 @@ module.exports = (DB)->
 				'DS:tx_50_packets:DERIVE:120:0:NaN',
 				'DS:rx_50_bytes:DERIVE:120:0:NaN',
 				'DS:rx_50_packets:DERIVE:120:0:NaN'
-
-				'DS:mem_total:DERIVE:120:0:NaN'
 			]
 	Global_RRA = ['RRA:MIN:0.5:1:1440','RRA:AVERAGE:0.5:1:1440','RRA:MAX:0.5:1:1440','RRA:MIN:0.5:5:2880','RRA:AVERAGE:0.5:5:2880','RRA:MAX:0.5:5:2880']
 

@@ -1,4 +1,3 @@
-models = require('./models')
 config = require('../config')
 RRD = require('./rrdtool')
 fs = require('fs')
@@ -43,10 +42,18 @@ create = (name,type)->
 			rrd_cache[path] = tmp
 
 update = (type,name,data)->
-	path = config.rrd_path+'/'+type+'/'+name+'.rrd'
-	if not rrd_cache[path]
-		create(type,models[type.charAt(0).toUpperCase() + type.slice(1)])
-	rrd_cache[path].update(path,'N',data,(err)->)
+	if data and Object.keys(data).length >0
+		type = type.toLowerCase()
+		path = config.rrd_path+'/'+type+'/'+name+'.rrd'
+		if not rrd_cache[path]
+			models = require('./models')
+			typename = type.charAt(0).toUpperCase() + type.slice(1)
+			create(type,models[typename])
+			tmp = new RRD()
+			tmp.update(path,'N',data,(err)->)
+		else
+			rrd_cache[path].update(path,'N',data,(err)->)
+
 
 module.exports.create = create
 module.exports.update = update
