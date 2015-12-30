@@ -47,3 +47,13 @@ npm start
 ```bash
 npm test
 ```
+
+# Pushdaemon
+
+## alfred
+Install as cronjob:
+```
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+*/3 * * * * root /root/monitorMap/node_modules/.bin/coffee/root/monitorMap/pushdaemon/alfred.coffee
+
+```
