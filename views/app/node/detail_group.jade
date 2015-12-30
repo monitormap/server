@@ -11,5 +11,5 @@ table.ui.table
 			th Mac
 	tbody
 		tr(ng-repeat='i in obj.nodes')
-			td(ng-repeat='li in list',ng-if="li.mac=i") {{li.name}}
+			td(ng-repeat='li in list',ng-if="li.mac==i") {{li.name}}
 			td {{i}}

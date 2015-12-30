@@ -35,7 +35,7 @@ table.ui.table.striped
 				a(ui-sref="node.detailgroup({name:item.name})") {{item.name}}
 			td(ng-if='obj.id!=item.id')
 				.ui.label(ng-repeat='i in item.nodes')
-					span(ng-repeat='li in list',ng-if="li.mac=i") {{li.name}}
+					span(ng-repeat='li in list',ng-if="li.mac==i") {{li.name}}
 			td(ng-if='obj.id!=item.id')
 				button.ui.button.icon(ng-click='setObj(item)',ng-if='passphrase')
 					i.icon.edit
