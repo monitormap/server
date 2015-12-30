@@ -44,8 +44,10 @@ create = (name,type)->
 
 update = (type,name,data)->
 	path = config.rrd_path+'/'+type+'/'+name+'.rrd'
-	if rrd_cache[path]
-		rrd_cache[path].update(path,'N',data,(err)->)
+	if not rrd_cache[path]
+		create(type,models[type])
+		rrd_cache[path] = new RRD()
+	rrd_cache[path].update(path,'N',data,(err)->)
 
 module.exports.create = create
 module.exports.update = update
