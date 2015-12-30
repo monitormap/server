@@ -77,4 +77,6 @@ getInfos((data)->
 				if c <=0
 					socket.disconnect()
 			)
+	else
+		socket.disconnect()
 )
