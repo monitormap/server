@@ -21,6 +21,7 @@
 	},
 	"times":{
 		"newitems":300000,
-		"toRRD":150000
+		"toRRD":150000,
+		"stepRRD":300000
 	}
 }
