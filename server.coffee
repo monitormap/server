@@ -19,27 +19,6 @@ app.use((req, res, next) ->
 api = require('./api')
 app.use('/api',api)
 
-if(config.dynamisch)
-	app.use(express.static('static_src'))
-	app.set('view engine', 'jade')
-	partials = (req, res)->
-	  filename = req.params.filename
-	  return unless filename
-	  res.render "app/node/#{filename}.jade"
-	app.get('/app/node/:filename.html', partials)
-	partials = (req, res)->
-	  filename = req.params.filename
-	  return unless filename
-	  res.render "app/#{filename}.jade"
-	app.get('/app/:filename.html', partials)
-	app.get('/', (req,res)->
-		res.render('index')
-		log("debug",req,"website")
-	)
-else
-	app.use(express.static('static'))
-
-
 server = require('http').Server(app)
 io = require('socket.io')(server,{path:'/ws'})
 
