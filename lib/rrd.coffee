@@ -2,7 +2,7 @@ config = require('../config')
 RRD = require('./rrdtool')
 fs = require('fs')
 
-createParam = ['-s',''+((config.times.toRRD/1000)|0)]
+createParam = ['-s',''+((config.times.toRRD*2/1000)|0)]
 
 rrd_cache = {}
 
