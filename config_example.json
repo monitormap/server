@@ -15,10 +15,10 @@
 		"database":"monitormap"
 	},
 	"rrd_path":"/tmp/data",
-	"passphrase":"test",
+	"passphrase-push":"test",
+	"passphrase-edit":"test",
 	"times":{
 		"newitems":300000,
 		"toRRD":300000
-	},
-	"dynamisch":true
+	}
 }
