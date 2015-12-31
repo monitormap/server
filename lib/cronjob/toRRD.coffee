@@ -41,7 +41,7 @@ module.exports = ->
 		if type.indexOf('_') != 0
 			# findAll async fix
 			t = type+''
-			models[type].DB.findAll({where:{updatedAt:{$gt: new Date(new Date() - config.times.toRRD)}}}).then((items)->
+			models[type].DB.findAll({where:{updatedAt:{gt: new Date(new Date() - config.times.toRRD)}}}).then((items)->
 				for item in items
 					update_node(t,item)
 				models[t].Group.findAll().then((groups)->

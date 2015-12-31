@@ -22,7 +22,7 @@ module.exports = (io,socket)->
 		)
 	)
 	socket.on('node:set',(passphrase,new_node,call)->
-		if(passphrase==config.passphrase)
+		if(passphrase==config.passphrase.pushdaemon or passphrase==config.passphrase.edit)
 			models.Node.DB.findAll({where:{mac:new_node.mac}}).then((node)->
 				if node.length <= 0
 					models.Node.DB.create(new_node).then((node)->
@@ -47,7 +47,7 @@ module.exports = (io,socket)->
 		)
 	)
 	socket.on('node:group:set',(passphrase,new_group,call)->
-		if(passphrase==config.passphrase)
+		if(passphrase==config.passphrase.edit)
 			models.Node.Group.findAll({where:{name:new_group.name}}).then((group)->
 				if group.length <= 0
 					models.Node.Group.create(new_group).then((group)->
