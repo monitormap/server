@@ -14,7 +14,7 @@ module.exports = (io,socket)->
 		)
 	)
 	socket.on('node:list:new',(call)->
-		models.Node.DB.findAll({where:{createdAt:{$gt: new Date(new Date() - config.newitems)}}}).then((node)->
+		models.Node.DB.findAll({where:{createdAt:{gt: (new Date(new Date().getTime() - config.newitems)).getTime()}}}).then((node)->
 			if node.length>0
 				call({s:true,list:node})
 			else
@@ -24,6 +24,8 @@ module.exports = (io,socket)->
 	socket.on('node:set',(passphrase,new_node,call)->
 		if(passphrase==config.passphrase.pushdaemon or passphrase==config.passphrase.edit)
 			models.Node.DB.findAll({where:{mac:new_node.mac}}).then((node)->
+				if new_node.timedate
+						new_node.timedate =  new Date().getTime()
 				if node.length <= 0
 					models.Node.DB.create(new_node).then((node)->
 						io.emit('event::node:set:create',node)
