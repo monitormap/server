@@ -1,5 +1,0 @@
-{
-	"passphrase":"test",
-	"url_socket":"http://localhost:8080",
-	"socket_alfred":"/var/run/alfred.sock"
-}
