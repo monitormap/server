@@ -23,10 +23,13 @@ app.get('/statistic',(req,res)->
 	)
 )
 app.get('/statistic/:name',(req,res)->
-	models.Node.Group.findOne({where:{name:req.param.name}}).then((group)->
-		models.Node.DB.findAll({where:{mac:{$any:group.nodes},updatedAt:{$gt: (new Date(new Date().getTime() - config.times.statistic)).getTime()}}}).then((nodes)->
-			res.jsonp(statistic(nodes))
-		)
+	models.Node.Group.findOne({where:{name:req.params.name}}).then((group)->
+		if group
+			models.Node.DB.findAll({where:{mac:{$any:group.nodes},updatedAt:{$gt: (new Date(new Date().getTime() - config.times.statistic)).getTime()}}}).then((nodes)->
+				res.jsonp(statistic(nodes))
+			)
+		else
+			res.jsonp({})
 	)
 )
 module.exports = app

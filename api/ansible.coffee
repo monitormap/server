@@ -38,10 +38,13 @@ app.get('/get',(req,res)->
 )
 
 app.get('/get/:name',(req,res)->
-	models.Node.Group.findOne({where:{name:req.param.name}}).then((group)->
-		models.Node.DB.findAll({where:{mac:{$any:group.nodes},updatedAt:{$gt: (new Date(new Date().getTime() - config.times.statistic)).getTime()}}}).then((nodes)->
-			res.jsonp(get(nodes))
-		)
+	models.Node.Group.findOne({where:{name:req.params.name}}).then((group)->
+		if group
+			models.Node.DB.findAll({where:{mac:{$any:group.nodes},updatedAt:{$gt: (new Date(new Date().getTime() - config.times.statistic)).getTime()}}}).then((nodes)->
+				res.jsonp(get(nodes))
+			)
+		else
+			res.jsonp({})
 	)
 )
 
