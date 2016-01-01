@@ -17,7 +17,7 @@ _update_group = (type,items,name) ->
 		for item in items
 			for entry in Object.keys(item.dataValues)
 				for ds in models[type].global.DS
-					if ds.indexOf(entry) >= 0
+					if ds.indexOf(entry) >= 0 and parseInt(item[entry])
 						if obj[entry]
 							obj[entry] += parseInt(item[entry])
 						else
