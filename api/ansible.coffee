@@ -39,7 +39,7 @@ app.get('/get',(req,res)->
 
 app.get('/get/:name',(req,res)->
 	models.Node.Group.findAll({where:{name:req.param.name}}).then((group)->
-		models.Node.DB.findAll({where:{mac:{$in:group.nodes},updatedAt:{$gt: (new Date(new Date().getTime() - config.times.ansible)).getTime()}}}).then((nodes)->
+		models.Node.DB.findAll({where:{mac:{$any:group.nodes}},updatedAt:{$gt: (new Date(new Date().getTime() - config.times.ansible)).getTime()}}).then((nodes)->
 			res.jsonp(get(nodes))
 		)
 	)
