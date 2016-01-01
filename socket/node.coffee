@@ -14,7 +14,7 @@ module.exports = (io,socket)->
 		)
 	)
 	socket.on('node:list:new',(call)->
-		models.Node.DB.findAll({where:{createdAt:{gt: (new Date(new Date().getTime() - config.newitems)).getTime()}}}).then((node)->
+		models.Node.DB.findAll({where:{createdAt:{$gt: (new Date(new Date().getTime() - config.newitems)).getTime()}}}).then((node)->
 			if node.length>0
 				call({s:true,list:node})
 			else
