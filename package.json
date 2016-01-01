@@ -6,6 +6,7 @@
     "coffee-script": "^1.9.3",
     "colors": "^1.1.2",
     "express": "",
+    "ipv6calc": "0.0.5",
     "node-uuid": "^1.4.7",
     "pg": "^4.4.3",
     "sequelize": "^3.15.1",

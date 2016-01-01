@@ -22,6 +22,9 @@
 	"times":{
 		"newitems":300000,
 		"toRRD":150000,
-		"stepRRD":300000
-	}
+		"stepRRD":300000,
+		"statistic":300000,
+		"ansible":300000
+	},
+	"ipv6_prefix":"fe80::"
 }
