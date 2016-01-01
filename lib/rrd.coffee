@@ -43,6 +43,7 @@ create = (name,type)->
 
 update = (type,name,data)->
 	if data and Object.keys(data).length >0
+		time = 'N'
 		type = type.toLowerCase()
 		path = config.rrd_path+'/'+type+'/'+name+'.rrd'
 		if not rrd_cache[path]
@@ -50,9 +51,9 @@ update = (type,name,data)->
 			typename = type.charAt(0).toUpperCase() + type.slice(1)
 			create(type,models[typename])
 			tmp = new RRD()
-			tmp.update(path,'N',data,(err)->)
+			tmp.update(path,time,data,(err)->)
 		else
-			rrd_cache[path].update(path,'N',data,(err)->)
+			rrd_cache[path].update(path,time,data,(err)->)
 
 
 module.exports.create = create
