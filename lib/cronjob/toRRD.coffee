@@ -15,9 +15,9 @@ _update_group = (type,items,name) ->
 	if items and items.length > 0
 		obj.count = items.length
 		for ds in models[type].global.DS
-			for entry in Object.keys(items[0].dataValues)
-				if ds.indexOf(entry) >= 0
-					for item in items
+			for item in items
+				for entry in Object.keys(item.dataValues)
+					if ds.indexOf(entry) >= 0
 						if obj[entry]
 							obj[entry] += parseInt(item[entry])
 						else
